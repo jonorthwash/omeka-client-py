@@ -1,0 +1,161 @@
+ALLDATA = 
+{
+	"item_type":
+	{
+		"id": ID
+	},
+	"collection":
+	{
+		"id": 2  # Issues of Molla Nәsrәddin
+	}
+	"tags":[],
+	"element_texts":
+	[
+		{
+			"html":false,
+			"text":"1909",
+			"element_set":
+			{
+				"id":3,
+				"url": "http:\\/\\/www.indiana.edu\\/~srifias\\/omeka\\/api\\/element_sets\\/3",
+				"name":"Item Type Metadata",
+				"resource":"element_sets"
+			},
+			"element":
+			{
+				"id":52,
+				"url":"http:\\/\\/www.indiana.edu\\/~srifias\\/omeka\\/api\\/elements\\/52",
+				"name":"Year",
+				"resource":"elements"
+			}
+		},
+		{
+			"html":false,
+			"text":"Emir of Bukhara",
+			"element_set":
+			{
+				"id":3,
+				"url":"http:\\/\\/www.indiana.edu\\/~srifias\\/omeka\\/api\\/element_sets\\/3",
+				"name":"Item Type Metadata",
+				"resource":"element_sets"
+			},
+			"element":
+			{
+				"id":53,
+				"url":"http:\\/\\/www.indiana.edu\\/~srifias\\/omeka\\/api\\/elements\\/53",
+				"name":"Title",
+				"resource":"elements"
+			}
+		},
+		{
+			"html":false,
+			"text":"3",
+			"element_set":
+			{
+				"id":3,
+				"url":"http:\\/\\/www.indiana.edu\\/~srifias\\/omeka\\/api\\/element_sets\\/3",
+				"name":"Item Type Metadata",
+				"resource":"element_sets"
+			},
+			"element":
+			{
+				"id":54,
+				"url":"http:\\/\\/www.indiana.edu\\/~srifias\\/omeka\\/api\\/elements\\/54",
+				"name":"Issue",
+				"resource":"elements"
+			}
+		},
+		{
+			"html":false,
+			"text":"Emir of Bukhara",
+			"element_set":
+			{
+				"id":1,
+				"url":"http:\\/\\/www.indiana.edu\\/~srifias\\/omeka\\/api\\/element_sets\\/1",
+				"name":"Dublin Core",
+				"resource":"element_sets"
+			},
+			"element":
+			{
+				"id":50,
+				"url":"http:\\/\\/www.indiana.edu\\/~srifias\\/omeka\\/api\\/elements\\/50",
+				"name":"Title",
+				"resource":"elements"
+			}
+		},
+		{
+			"html":false,
+			"text":"The Emir of Bukhara lounges in a hammock drinking [something].",
+			"element_set":
+			{
+				"id":3,
+				"url":"http:\\/\\/www.indiana.edu\\/~srifias\\/omeka\\/api\\/element_sets\\/3",
+				"name":"Item Type Metadata",
+				"resource":"element_sets"
+			},
+			"element":
+			{
+				"id":56,
+				"url":"http:\\/\\/www.indiana.edu\\/~srifias\\/omeka\\/api\\/elements\\/56",
+				"name":"Exposition",
+				"resource":"elements"
+			}
+		}
+	]
+}
+
+
+
+#	"tags":[],
+#		{
+#			"html":false,
+#			"text": TITLE,
+#			"element_set":
+#			{
+#				"id":3,
+#			},
+#			"element":
+#			{
+#				"id":53,
+#				"name":"Title",
+#			}
+#		},
+#		{
+#			"html":false,
+#			"text": ISSUE,
+#			"element_set":
+#			{
+#				"id":3,
+#			},
+#			"element":
+#			{
+#				"id":54,
+#				"name":"Issue",
+#			}
+#		},
+#		{
+#			"html":false,
+#			"text": TITLE,
+#			"element_set":
+#			{
+#				"id":1,
+#			},
+#			"element":
+#			{
+#				"id":50,
+#				"name":"Title",
+#			}
+#		},
+#		{
+#			"html":false,
+#			"text": EXPOSITION,
+#			"element_set":
+#			{
+#				"id":3,
+#			},
+#			"element":
+#			{
+#				"id":56,
+#				"name":"Exposition",
+#			}
+#		}

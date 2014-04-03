@@ -1,5 +1,5 @@
 import httplib2
-import urllib
+import urllib.request, urllib.parse, urllib.error
 import mimetypes
 
 class OmekaClient:
@@ -37,11 +37,21 @@ class OmekaClient:
         L.append('')
         L.append(contents)
         L.append('--' + BOUNDARY)
+        #print(CRLF, '-', len(L))
+        #print(CRLF.join(L))
         body = CRLF.join(L)
         headers['content-length'] = str(len(body))
+        headers['charset'] = 'utf-8'
         query = {}
         return self.post("files", body, query, headers)
      
+    def post_file_urllib2(self, fields, filename, contents):
+        files = {'file': {'filename': filename, 'content': contents}}
+        data, headers = formdata.encode_multipart(fields, files)
+        request = urllib2.Request('http://httpbin.org/post', data=data, headers=headers)
+        f = urllib2.urlopen(request)
+
+
     def get_content_type(self, filename):
         """ use mimetypes to detect type of file to be uploaded """
         return mimetypes.guess_type(filename)[0] or 'application/octet-stream'
@@ -52,6 +62,6 @@ class OmekaClient:
             url += "/" + str(id)
         if self._key is not None:
             query["key"] = self._key
-        url += "?" + urllib.urlencode(query)
+        url += "?" + urllib.parse.urlencode(query)
         resp, content = self._http.request(url, method, body=data, headers=headers)
         return resp, content
