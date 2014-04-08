@@ -3,43 +3,51 @@
 import json
 from omekaclient import OmekaClient
 
+import io
 import base64
 
-client = OmekaClient("http://www.indiana.edu/~srifias/omeka/api", "6daa92a0ebce6605f7eba1cbdb0ee7e3051cfbb7")
+client = OmekaClient("http://www.indiana.edu/~srifias/omeka/api", "REPLACE WITH REAL KEY")
 
 # GET /items/:id
-response, content = client.get("items", id=3)
+response, content = client.get("items", id=63)
 print(response,content)
 
 # GET /items
 #response, content = client.get("items")
 
 # POST /items
-response, content = client.post("items", data='{"public":true}')
+
+#response, content = client.post("items", data='{"public":true}')
 #print(response,content)
-ID = json.loads(content.decode('utf8'))['id'] 
+#ID = json.loads(content.decode('utf8'))['id'] 
+ID = 63
 YEAR = 1906
 #id = 7
 
 ALLDATA = {
 	"item_type":
 	{
-		"id": ID
+		"html":False,
+		"id": 18
 	},
 	"collection":
 	{
+		"html":False,
 		"id": 2 
 	},
 	"element_texts":
 	[
 		{
+			"html":False,
 			"text": YEAR,
 			"element_set":
 			{
+				"html":False,
 				"id":3,
 			},
 			"element":
 			{
+				"html":False,
 				"id":52,
 				"name":"Year",
 			}
@@ -48,34 +56,47 @@ ALLDATA = {
 	]
 } # Issues of Molla Nәsrәddin
 
-ALLDATA = '{"item_type": {"id": %s}, "collection": {"id": 2}, "element_texts":[{"text": 1906,	"element_set": { "id":3 },"element": {"id":52, "name":"Year"}}]}' % ID
+#ALLDATA = '{"item_type": {"id": %s}, "collection": {"id": 2}, "element_texts":[{"text": 1906,	"element_set": { "id":3 },"element": {"id":52, "name":"Year"}}]}' % ID
+#ALLDATA = '{"item_type": {"id": %s}}' % ID
 
 # PUT /items/:id
 #response, content = client.put("items", 1, data='{"public":false}')
 #id = content['id']
 print(json.dumps(ALLDATA))
-response, content = client.put("items", id, data=json.dumps(ALLDATA))
+response, content = client.put("items", ID, data=json.dumps(ALLDATA))
 print(response,content)
 
 # DELETE /items/:id
 #response, content = client.delete("items", 1)
 
-filename = "/Users/jonathan/Desktop/MN/1906/compressed/MN 1 (1906)—1_compressed.jpg"
+filename = "/Users/jonathan/Desktop/MN/1906/compressed/MN 1 (1906)—1_compressed_compressed.jpg"
 #with open(filename, 'rb') as fn:
 #	contents = fn.read()
-contents = str(base64.b64encode(open(filename, 'rb').read()))
+file = open(filename, 'rb')
+readfile = file.read()
+print(readfile)
+print(len(readfile))
+contents = base64.b64encode(readfile).decode('ascii')
+#contents = str(open(filename, 'rb').read())
+print(contents)
+filename="MN 1 (1906)-1_compressed_compressed.jpg"
+n=70
+contents = '\r\n'.join([contents[i:i+n] for i in range(0, len(contents), n)])
 
 #contents = str(contents)
 #contents = contents.replace('"', '\\"')
 
 fields = {"collection": {
+			"html":False,
 			"id":2,
 			"resource":"collections"
 		},
 		"item": {
+			"html":False,
 			"id": ID
 		}
 	}
+#data = fields
 data = json.dumps(fields)
 #data = "collection: 2"
 response, content = client.post_file(data, filename, contents)
