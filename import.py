@@ -9,19 +9,19 @@ import base64
 client = OmekaClient("http://www.indiana.edu/~srifias/omeka/api", "REPLACE WITH REAL KEY")
 
 # GET /items/:id
-response, content = client.get("items", id=63)
-print(response,content)
+#response, content = client.get("items", id=63)
+#print(response,content)
 
 # GET /items
 #response, content = client.get("items")
 
 # POST /items
 
-#response, content = client.post("items", data='{"public":true}')
+response, content = client.post("items", data='{"public":true}')
 #print(response,content)
-#ID = json.loads(content.decode('utf8'))['id'] 
-ID = 63
-YEAR = 1906
+ID = json.loads(content.decode('utf8'))['id'] 
+#ID = 63
+#YEAR = 1906
 #id = 7
 
 ALLDATA = {
@@ -74,14 +74,16 @@ filename = "/Users/jonathan/Desktop/MN/1906/compressed/MN 1 (1906)—1_compresse
 #	contents = fn.read()
 file = open(filename, 'rb')
 readfile = file.read()
-print(readfile)
-print(len(readfile))
-contents = base64.b64encode(readfile).decode('ascii')
-#contents = str(open(filename, 'rb').read())
-print(contents)
+#print(readfile)
+#print(len(readfile))
+contents = readfile
+
+#contents = base64.b64encode(readfile).decode('ascii')
+##contents = str(open(filename, 'rb').read())
+#print(contents)
 filename="MN 1 (1906)-1_compressed_compressed.jpg"
-n=70
-contents = '\r\n'.join([contents[i:i+n] for i in range(0, len(contents), n)])
+#n=70
+#contents = '\r\n'.join([contents[i:i+n] for i in range(0, len(contents), n)])
 
 #contents = str(contents)
 #contents = contents.replace('"', '\\"')
