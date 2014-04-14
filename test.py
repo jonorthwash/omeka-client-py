@@ -2,7 +2,7 @@
 
 from omekaclient import OmekaClient
 
-client = OmekaClient("http://www.indiana.edu/~srifias/omeka/api", "6daa92a0ebce6605f7eba1cbdb0ee7e3051cfbb7")
+client = OmekaClient("http://localhost/omeka/api", "fd11f6fdcdcd2f524555b089790824ede6d27cff")
 
 # GET /items/:id
 response, content = client.get("items", id=1)
