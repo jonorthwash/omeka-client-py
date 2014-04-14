@@ -33,16 +33,11 @@ class OmekaClient:
         L.append(data)
         L.append('--' + BOUNDARY)
         L.append('Content-Disposition: form-data; name="file"; filename="%s"' % filename)
-        #L.append(b'Content-Transfer-Encoding: base64')
+
         L.append('Content-Type: %s' % self.get_content_type(filename))
         L.append('Content-Length: %s' % str(len(contents)))
         L.append('')
-        #L.append(CRLF)
-        #L.append(contents)
-        #L.append('--' + BOUNDARY)
-        
-        #print(CRLF, '-', len(L))
-        #print(CRLF.join(L))
+
         body = CRLF.join(L)
         body = bytes(body, encoding='utf-8')
         body += bytes(CRLF, encoding='utf-8') + contents + bytes(CRLF, encoding='utf-8')
@@ -52,16 +47,9 @@ class OmekaClient:
         headers['Connection'] = 'close'
         print(str(body))
         print(self.get_content_type(filename))
-        #headers['charset'] = 'utf-8'
+
         query = {}
         return self.post("files", body, query, headers)
-     
-    def post_file_urllib2(self, fields, filename, contents):
-        files = {'file': {'filename': filename, 'content': contents}}
-        data, headers = formdata.encode_multipart(fields, files)
-        request = urllib2.Request('http://httpbin.org/post', data=data, headers=headers)
-        f = urllib2.urlopen(request)
-
 
     def get_content_type(self, filename):
         """ use mimetypes to detect type of file to be uploaded """
