@@ -33,17 +33,24 @@ class OmekaClient:
         L.append(data)
         L.append('--' + BOUNDARY)
         L.append('Content-Disposition: form-data; name="file"; filename="%s"' % filename)
-        L.append('Content-Transfer-Encoding: base64')
+        #L.append(b'Content-Transfer-Encoding: base64')
         L.append('Content-Type: %s' % self.get_content_type(filename))
         L.append('')
-        L.append(contents)
-        L.append('--' + BOUNDARY)
+        L.append(CRLF)
+        #L.append(contents)
+        #L.append('--' + BOUNDARY)
+        
         #print(CRLF, '-', len(L))
         #print(CRLF.join(L))
         body = CRLF.join(L)
+        body = bytes(body, encoding='utf-8')
+        body += contents
+        body += bytes(CRLF+'--'+BOUNDARY, encoding='utf-8')
+        
         headers['content-length'] = str(len(body))
         headers['Connection'] = 'close'
         print(str(body))
+        print(self.get_content_type(filename))
         #headers['charset'] = 'utf-8'
         query = {}
         return self.post("files", body, query, headers)
